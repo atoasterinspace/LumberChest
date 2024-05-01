@@ -52,6 +52,12 @@ window.addEventListener("DOMContentLoaded", function() {
         normalContext.drawImage(imageData, 640 + xOffset, 624 + yOffset, outputWidth, outputHeight);
         textureContext.drawImage(imageData, 640 + xOffset, 624 + yOffset, outputWidth, outputHeight);
         specularContext.drawImage(imageData, 640 + xOffset, 624 + yOffset, outputWidth, outputHeight);
+        const canvasArray = [ textureCanvas, normalCanvas, specularCanvas ];
+        for (let cycle = 0; cycle < 3; cycle += 1) {
+          const anchor = document.getElementsByTagName("a")[cycle];
+          const canvasURL = canvasArray[cycle].toDataURL("image/png");
+          anchor.setAttribute("href", canvasURL);
+        };
       };
       imageData.setAttribute("src", image.getAttribute("src"));
     }, false);

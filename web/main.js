@@ -25,7 +25,6 @@ window.addEventListener("DOMContentLoaded", function() {
   specularContext.clearRect(0, 0, 1024, 1024);
   const input = document.getElementsByTagName("input")[0];
   input.addEventListener("change", function() {
-    // When change in the input element is detected, ex. file is uploaded
     const fileURL = input.files[0];
     const image = document.createElement("img");
     const reader = new FileReader();
@@ -33,14 +32,12 @@ window.addEventListener("DOMContentLoaded", function() {
       image.setAttribute("src", reader.result);
       const imageData = new Image();
       imageData.onload = function() {
-        // When provided image loads
         const width = imageData.width;
         const height = imageData.height;
         const aspectRatio = width / height;
         let outputWidth, outputHeight;
         let xOffset = 0
         let yOffset = 0;
-        // Scales to retain aspect ratio when resizing.
         if (width > height) {
           outputWidth = 130;
           outputHeight = Math.round(130 / aspectRatio);
@@ -50,14 +47,12 @@ window.addEventListener("DOMContentLoaded", function() {
           outputWidth = Math.round(130 * aspectRatio);
           xOffset = (130 - outputWidth) / 2;
         };
-        // Clears and draws to canvases
         normalContext.clearRect(0, 0, 1024, 1024);
         textureContext.clearRect(0, 0, 1024, 1024);
         specularContext.clearRect(0, 0, 1024, 1024);
         normalContext.drawImage(imageData, 640 + xOffset, 624 + yOffset, outputWidth, outputHeight);
         textureContext.drawImage(imageData, 640 + xOffset, 624 + yOffset, outputWidth, outputHeight);
         specularContext.drawImage(imageData, 640 + xOffset, 624 + yOffset, outputWidth, outputHeight);
-        // Generates anchors/links
         const canvasArray = [ textureCanvas, normalCanvas, specularCanvas ];
         for (let cycle = 0; cycle < 3; cycle += 1) {
           const anchor = document.getElementsByTagName("a")[cycle];

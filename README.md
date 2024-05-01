@@ -1,5 +1,5 @@
 # LumberChest
-The Fortnite Battle Royale faction chest rebuilt from the ground up for uefn. Thanks to @highlanderwins on youtube
+The Fortnite Battle Royale faction chest rebuilt from the ground up for UEFN. Thanks to @highlanderwins on youtube
 
 ## Tips
 Increasing the value when editing colors allows for more vibrant colors.

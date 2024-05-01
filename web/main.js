@@ -22,5 +22,19 @@ window.addEventListener("DOMContentLoaded", function() {
   normalContext.clearRect(0, 0, 1024, 1024);
   textureContext.clearRect(0, 0, 1024, 1024);
   specularContext.clearRect(0, 0, 1024, 1024);
-  
+  const input = document.getElementsByTagName("input")[0];
+  input.addEventListener("change", function() {
+    const fileURL = input.files[0];
+    const image = document.createElement("img");
+    const reader = new FileReader();
+    reader.addEventListener("load", function () {
+      image.setAttribute("src", reader.result);
+      const imageData = new Image();
+      imageData.onload = function() {
+        normalContext.drawImage(imageData, 0, 0);
+      };
+      imageData.setAttribute("src", image.getAttribute("src"));
+    }, false);
+    reader.readAsDataURL(fileURL);
+  });
 });

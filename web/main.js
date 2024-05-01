@@ -31,7 +31,23 @@ window.addEventListener("DOMContentLoaded", function() {
       image.setAttribute("src", reader.result);
       const imageData = new Image();
       imageData.onload = function() {
-        normalContext.drawImage(imageData, 640, 624, 130, 130);
+        const width = imageData.width;
+        const height = imageData.height;
+        const aspectRatio = width / height;
+        let outputWidth, outputHeight;
+        if (width > height) {
+          outputWidth = 130;
+          outputHeight = Math.round(130 / aspectRatio);
+        } else {
+          outputHeight = 130;
+          outputWidth = Math.round(130 * aspectRatio);
+        };
+        normalContext.clearRect(0, 0, 1024, 1024);
+        textureContext.clearRect(0, 0, 1024, 1024);
+        specularContext.clearRect(0, 0, 1024, 1024);
+        normalContext.drawImage(imageData, 640, 624, outputWidth, outputHeight);
+        textureContext.drawImage(imageData, 640, 624, outputWidth, outputHeight);
+        specularContext.drawImage(imageData, 640, 624, outputWidth, outputHeight);
       };
       imageData.setAttribute("src", image.getAttribute("src"));
     }, false);

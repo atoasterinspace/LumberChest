@@ -31,7 +31,7 @@ window.addEventListener("DOMContentLoaded", function() {
       image.setAttribute("src", reader.result);
       const imageData = new Image();
       imageData.onload = function() {
-        normalContext.drawImage(imageData, 0, 0);
+        normalContext.drawImage(imageData, 640, 624, 130, 130);
       };
       imageData.setAttribute("src", image.getAttribute("src"));
     }, false);

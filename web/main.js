@@ -35,19 +35,23 @@ window.addEventListener("DOMContentLoaded", function() {
         const height = imageData.height;
         const aspectRatio = width / height;
         let outputWidth, outputHeight;
+        let xOffset = 0
+        let yOffset = 0;
         if (width > height) {
           outputWidth = 130;
           outputHeight = Math.round(130 / aspectRatio);
+          yOffset = (130 - outputHeight) / 2;
         } else {
           outputHeight = 130;
           outputWidth = Math.round(130 * aspectRatio);
+          xOffset = (130 - outputWidth) / 2;
         };
         normalContext.clearRect(0, 0, 1024, 1024);
         textureContext.clearRect(0, 0, 1024, 1024);
         specularContext.clearRect(0, 0, 1024, 1024);
-        normalContext.drawImage(imageData, 640, 624, outputWidth, outputHeight);
-        textureContext.drawImage(imageData, 640, 624, outputWidth, outputHeight);
-        specularContext.drawImage(imageData, 640, 624, outputWidth, outputHeight);
+        normalContext.drawImage(imageData, 640 + xOffset, 624 + yOffset, outputWidth, outputHeight);
+        textureContext.drawImage(imageData, 640 + xOffset, 624 + yOffset, outputWidth, outputHeight);
+        specularContext.drawImage(imageData, 640 + xOffset, 624 + yOffset, outputWidth, outputHeight);
       };
       imageData.setAttribute("src", image.getAttribute("src"));
     }, false);

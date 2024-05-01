@@ -1,7 +1,6 @@
 * {
   margin: 0px;
   padding: 0px;
-  font-family: Helvetica, Arial, sans-serif;
 }
 html, body {
   width: 100vw;
@@ -15,4 +14,8 @@ canvas {
   width: 300px;
   height: 300px;
   margin: 5px;
+}
+a {
+  color: initial;
+  text-decoration: underline;
 }

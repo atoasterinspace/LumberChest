@@ -6,4 +6,5 @@ The Fortnite Battle Royale faction chest rebuilt from the ground up for UEFN. Th
 
 ## Tips
 -Increase value beyond 1 when editing colors to increase brightness.
+
 -Watch the setup videos on [youtube.com/@atoasterinspace](https://youtube.com/@atoasterinspace) and [youtube.com/@highlander1st](https://youtube.com/@highlander1st).
